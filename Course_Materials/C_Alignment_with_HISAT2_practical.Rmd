@@ -73,12 +73,14 @@ our 'basename'.
 > 
 > `hisat2-build -p 7 references/Mus_musculus.GRCm38.chr1.fa references/hisat2_index_chr1/grcm38`
 >    
->    Here we are providing the fasta file
->    `references/Mus_musculus.GRCm38.chr1.fa` for the `<reference_in>` and
->    setting the `<hisat2_index_base>` to
->    `references/hisat2_index_chr1/mmu.GRCm38`, so all the files will be created in
->    the directory `references/hisat2_index_chr1` and their names will start
->    with `mmu.GRCm38`.
+> Here we are:  
+>
+> * providing the fasta file *references/Mus_musculus.GRCm38.chr1.fa* for
+>   the `<reference_in>`  
+> * setting the `<hisat2_index_base>` to
+>   *references/hisat2_index_chr1/mmu.GRCm38*, so all the files will be
+>   created in the directory *references/hisat2_index_chr1* and their
+>   names will start with `mmu.GRCm38`.
 > 
 > A) Why do we use `-p 7`? Take a look at `hisat2-build` help.
 > B) How many files are created? 
@@ -89,9 +91,10 @@ our 'basename'.
 To map the reads to the genome we need to run `hisat2`. 
 
 We will need to provide the command with three pieces of information:  
-* A fastq file containing our unaligned reads
+
 * The path to the index files - we do this by just supplying the basename for
-  the index as in the previous command
+  the index as in the previous command  
+* A fastq file containing our unaligned reads  
 * A name for the output file
 
 We should also instruct hisat2 how many threads (processors) it should use (these
@@ -119,11 +122,13 @@ Usage:
       specified many times.  E.g. '-U file1.fq,file2.fq -U file3.fq'.
 ```
 
-So we need to provide the path to the index after the `-x` flag, the path to
-out fastq file after the `-U` flag (if we had paired end data we would have 2
-fastq files and would use the -1 and -2 flags), and the name for the output
-file after the `-S` flag.  The output file format is SAM, so the output
-filename should end `.sam`.
+So we need to provide:  
+
+* the path to the index after the `-x` flag  
+* the path to out fastq file after the `-U` flag (if we had paired end data we
+  would have 2 fastq files and would use the -1 and -2 flags)  
+* the name for the output SAM file after the `-S` flag.  The output file format
+  is SAM, so the output filename should end `.sam`.
 
 There many additional options that allow us to tweak the parameters used in the
 alignment. As a general rule, unless you really know what you are doing you 
@@ -131,8 +136,12 @@ should stick to the defaults.
 
 ### Exercise 2 
 
-> 1. Identify the smallest file in the fastq directory. hint: use `ls -lS` to
->    list the files and sort by size
+> 1. Identify the smallest file in the fastq directory. hint: use `ls -lSh` to
+>    list the files and sort by size: 
+>      * `-l` - use long listing format - provides additional columns about
+         permissions, file size and last modification time
+>      * `-S` - Sort by file size
+>      * `-h` - print the in a human readable format
 > 2. Create a directory called `bam` (BAM will be our final aligned file
 >    format, but we have one more step after alignment to get there).
 > 3. Use hisat2 to align the fastq file. Use the following parameters
@@ -187,8 +196,8 @@ This will create a new file called `my_sample.sorted.bam.bai` (**ba**m **i**ndex
 
 ### Exercise 3
 
-> 1. Transform your aligned SAM file in to a BAM file.
-> 2. Sort the BAM file
+> 1. Transform your aligned SAM file in to a BAM file called `MCL1.DL.bam`.
+> 2. Sort the BAM file to a create a bam files called `MCL1.DL.sorted.bam`.
 > Sorting can take 5-10 minutes 
 > 3. Index the sorted BAM file
 > 4. Now that you have a bam file view the header of the file with the command:  

@@ -223,22 +223,22 @@ summary {
 <h3>Exercise 2</h3>
 <blockquote>
 <ol style="list-style-type: decimal">
-<li>Identify the smallest file in the fastq directory. hint: use <code>ls -lS</code> to list the files and sort by size</li>
+<li>Identify the smallest file in the fastq directory. hint: use <code>ls -lSh</code> to list the files and sort by size</li>
 </ol>
-<p><code>ls -lS fastq</code></p>
-<pre><code>total 27461520
--rw-rw-r-- 1 user01 bioinformatics 2544727040 Aug 23 15:15 MCL1.DI.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2421094995 Aug 23 15:15 MCL1.LB.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2417795588 Aug 23 15:12 MCL1.DG.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2408367553 Aug 23 15:14 MCL1.LC.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2398767461 Aug 23 15:14 MCL1.LE.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2392474426 Aug 23 15:16 MCL1.LF.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2383025600 Aug 23 15:16 MCL1.DJ.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2349919347 Aug 23 15:12 MCL1.LD.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2279940489 Aug 23 15:13 MCL1.DH.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2272671664 Aug 23 15:13 MCL1.LA.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2200151237 Aug 23 15:14 MCL1.DK.fastq.gz
--rw-rw-r-- 1 user01 bioinformatics 2051581379 Aug 23 15:13 MCL1.DL.fastq.gz</code></pre>
+<p><code>ls -lSh fastq</code></p>
+<pre><code>total 27G
+-rw-rw-r-- 1 participant participant 2.4G Aug 28 17:03 MCL1.DI.fastq.gz
+-rw-rw-r-- 1 participant participant 2.3G Aug 28 17:04 MCL1.LB.fastq.gz
+-rw-rw-r-- 1 participant participant 2.3G Aug 28 17:02 MCL1.DG.fastq.gz
+-rw-rw-r-- 1 participant participant 2.3G Aug 28 17:00 MCL1.LC.fastq.gz
+-rw-rw-r-- 1 participant participant 2.3G Aug 28 17:02 MCL1.LE.fastq.gz
+-rw-rw-r-- 1 participant participant 2.3G Aug 28 17:03 MCL1.LF.fastq.gz
+-rw-rw-r-- 1 participant participant 2.3G Aug 28 17:01 MCL1.DJ.fastq.gz
+-rw-rw-r-- 1 participant participant 2.2G Aug 28 17:01 MCL1.LD.fastq.gz
+-rw-rw-r-- 1 participant participant 2.2G Aug 28 17:04 MCL1.DH.fastq.gz
+-rw-rw-r-- 1 participant participant 2.2G Aug 28 17:00 MCL1.LA.fastq.gz
+-rw-rw-r-- 1 participant participant 2.1G Aug 28 17:03 MCL1.DK.fastq.gz
+-rw-rw-r-- 1 participant participant 2.0G Aug 28 17:01 MCL1.DL.fastq.gz</code></pre>
 <p>The 5th column shows the file size in bytes. MCL1.DL.fastq.gz is the smallest fastq file.</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Create a directory called <code>bam</code> (BAM will be our final aligned file format, but we have one more step after alignment to get there).</li>

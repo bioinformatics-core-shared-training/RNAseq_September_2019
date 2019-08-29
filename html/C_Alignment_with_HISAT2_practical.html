@@ -212,7 +212,12 @@ There should be file called <code>Mus_musculus.GRCm38.chr1.fa</code>. This is th
 <li>To create the hisat2 index run the following command:</li>
 </ol>
 <p><code>hisat2-build -p 7 references/Mus_musculus.GRCm38.chr1.fa references/hisat2_index_chr1/grcm38</code></p>
-<p>Here we are providing the fasta file <code>references/Mus_musculus.GRCm38.chr1.fa</code> for the <code>&lt;reference_in&gt;</code> and setting the <code>&lt;hisat2_index_base&gt;</code> to <code>references/hisat2_index_chr1/mmu.GRCm38</code>, so all the files will be created in the directory <code>references/hisat2_index_chr1</code> and their names will start with <code>mmu.GRCm38</code>.</p>
+<p>Here we are:</p>
+<ul>
+<li>providing the fasta file <em>references/Mus_musculus.GRCm38.chr1.fa</em> for the <code>&lt;reference_in&gt;</code><br />
+</li>
+<li>setting the <code>&lt;hisat2_index_base&gt;</code> to <em>references/hisat2_index_chr1/mmu.GRCm38</em>, so all the files will be created in the directory <em>references/hisat2_index_chr1</em> and their names will start with <code>mmu.GRCm38</code>.</li>
+</ul>
 <ol style="list-style-type: upper-alpha">
 <li>Why do we use <code>-p 7</code>? Take a look at <code>hisat2-build</code> help.</li>
 <li>How many files are created?</li>
@@ -223,8 +228,14 @@ There should be file called <code>Mus_musculus.GRCm38.chr1.fa</code>. This is th
 <div id="align-with-hisat2" class="section level2">
 <h2>2 Align with Hisat2</h2>
 <p>To map the reads to the genome we need to run <code>hisat2</code>.</p>
-<p>We will need to provide the command with three pieces of information:<br />
-* A fastq file containing our unaligned reads * The path to the index files - we do this by just supplying the basename for the index as in the previous command * A name for the output file</p>
+<p>We will need to provide the command with three pieces of information:</p>
+<ul>
+<li>The path to the index files - we do this by just supplying the basename for the index as in the previous command<br />
+</li>
+<li>A fastq file containing our unaligned reads<br />
+</li>
+<li>A name for the output file</li>
+</ul>
 <p>We should also instruct hisat2 how many threads (processors) it should use (these machines have 8 processors, so we should let hisat2 use 7 of them, keeping 1 free).</p>
 <p>Take a quick look to hisat2’s description</p>
 <p><code>hisat2 --help</code></p>
@@ -243,13 +254,25 @@ There should be file called <code>Mus_musculus.GRCm38.chr1.fa</code>. This is th
 
       &lt;m1&gt;, &lt;m2&gt;, &lt;r&gt; can be comma-separated lists (no whitespace) and can be
       specified many times.  E.g. '-U file1.fq,file2.fq -U file3.fq'.</code></pre>
-<p>So we need to provide the path to the index after the <code>-x</code> flag, the path to out fastq file after the <code>-U</code> flag (if we had paired end data we would have 2 fastq files and would use the -1 and -2 flags), and the name for the output file after the <code>-S</code> flag. The output file format is SAM, so the output filename should end <code>.sam</code>.</p>
+<p>So we need to provide:</p>
+<ul>
+<li>the path to the index after the <code>-x</code> flag<br />
+</li>
+<li>the path to out fastq file after the <code>-U</code> flag (if we had paired end data we would have 2 fastq files and would use the -1 and -2 flags)<br />
+</li>
+<li>the name for the output SAM file after the <code>-S</code> flag. The output file format is SAM, so the output filename should end <code>.sam</code>.</li>
+</ul>
 <p>There many additional options that allow us to tweak the parameters used in the alignment. As a general rule, unless you really know what you are doing you should stick to the defaults.</p>
 <div id="exercise-2" class="section level3">
 <h3>Exercise 2</h3>
 <blockquote>
 <ol style="list-style-type: decimal">
-<li>Identify the smallest file in the fastq directory. hint: use <code>ls -lS</code> to list the files and sort by size</li>
+<li>Identify the smallest file in the fastq directory. hint: use <code>ls -lSh</code> to list the files and sort by size:
+<ul>
+<li><code>-l</code> - use long listing format - provides additional columns about permissions, file size and last modification time</li>
+<li><code>-S</code> - Sort by file size</li>
+<li><code>-h</code> - print the in a human readable format</li>
+</ul></li>
 <li>Create a directory called <code>bam</code> (BAM will be our final aligned file format, but we have one more step after alignment to get there).</li>
 <li>Use hisat2 to align the fastq file. Use the following parameters
 <ul>
@@ -282,8 +305,8 @@ There should be file called <code>Mus_musculus.GRCm38.chr1.fa</code>. This is th
 <h3>Exercise 3</h3>
 <blockquote>
 <ol style="list-style-type: decimal">
-<li>Transform your aligned SAM file in to a BAM file.</li>
-<li>Sort the BAM file Sorting can take 5-10 minutes</li>
+<li>Transform your aligned SAM file in to a BAM file called <code>MCL1.DL.bam</code>.</li>
+<li>Sort the BAM file to a create a bam files called <code>MCL1.DL.sorted.bam</code>. Sorting can take 5-10 minutes</li>
 <li>Index the sorted BAM file</li>
 <li>Now that you have a bam file view the header of the file with the command:<br />
 <code>samtools view -H my_sample.sorted.bam</code><br />
