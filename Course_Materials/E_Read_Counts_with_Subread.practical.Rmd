@@ -149,7 +149,7 @@ before but now the folowing columns contain the counts for all of the samples.
 head counts/GSE60450_Lactation.chr15.featureCounts
 ```
 
-> ## Challenge {.challenge}
+### Exercise 1
 >
 > 1. Redo the counting for your sorted bam over the exons, rather than the
 >    genes. Use `featureCounts --help` to find the option you need to use. Make

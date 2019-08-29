@@ -187,7 +187,9 @@ summary {
 <div id="TOC">
 <ul>
 <li><a href="#introduction-and-data-import">Introduction and data import</a></li>
-<li><a href="#counting">Counting</a></li>
+<li><a href="#counting">Counting</a><ul>
+<li><a href="#exercise-1">Exercise 1</a></li>
+</ul></li>
 </ul>
 </div>
 
@@ -254,8 +256,9 @@ head references/Mus_musculus.GRCm38.97.gtf</code></pre>
       small_bams/MCL*.bam</code></pre>
 <p>This gives us a combined counts table as an output with the first 6 columns as before but now the folowing columns contain the counts for all of the samples.</p>
 <pre><code>head counts/GSE60450_Lactation.chr15.featureCounts</code></pre>
+<div id="exercise-1" class="section level3">
+<h3>Exercise 1</h3>
 <blockquote>
-<h2 id="challenge" class="challenge">Challenge</h2>
 <ol style="list-style-type: decimal">
 <li>Redo the counting for your sorted bam over the exons, rather than the genes. Use <code>featureCounts --help</code> to find the option you need to use. Make sure featureCounts outputs the results to a new file.</li>
 <li>Redo the counting over genes, allowing for multimapping reads. Compare the results to our intial counts.</li>
@@ -264,6 +267,7 @@ head references/Mus_musculus.GRCm38.97.gtf</code></pre>
 <div id="refs" class="references">
 <div id="ref-Liao2014">
 <p>Liao, Yang, Gordon K Smyth, and Wei Shi. 2014. “featureCounts: an efficient general purpose program for assigning sequence reads to genomic features.” <em>Bioinformatics (Oxford, England)</em> 30 (7): 923–30. doi:<a href="https://doi.org/10.1093/bioinformatics/btt656">10.1093/bioinformatics/btt656</a>.</p>
+</div>
 </div>
 </div>
 </div>
