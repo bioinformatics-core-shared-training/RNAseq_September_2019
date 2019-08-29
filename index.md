@@ -47,7 +47,7 @@ Methods](html/A_Introduction_to_RNAseq_Methods.html) - Ashley Sawle
 11:30 - 12:30 Short read alignment with HISAT2 - Ashley Sawle  
     - [Introductory slides](html/C_Alignment_with_HISAT2.html)  
     - [Practical](html/C_Alignment_with_HISAT2_practical.html)  
-    - [Practical solutions](html/C_Alignment_with_HISAT2_practical.Solutions.html)  
+    - [Practical solutions](html/C_Alignment_with_HISAT2.Solutions.html)  
 
 12:30 - 13:30 Lunch
 
@@ -56,12 +56,12 @@ Methods](html/A_Introduction_to_RNAseq_Methods.html) - Ashley Sawle
 15:00 - 16:30 QC of alignment - Ashley Sawle  
     - [Introductory slides](html/D_QC_of_aligned_reads.html)  
     - [Practical](html/D_QC_of_aligned_reads_practical.html)  
-    - [Practical solutions](html/D_QC_of_aligned_reads_practical.Solutions.html)  
+    - [Practical solutions](html/D_QC_of_aligned_reads.Solutions.html)  
 
 16:30 - 17:30 Quantification with SubRead - Abbi Edwards
     - [Introductory slides](html/E_Read_Counts_with_Subread.html)  
     - [Practical](html/E_Read_Counts_with_Subread.practical.html)  
-    - [Practical solutions](html/E_Read_Counts_with_Subread.practical.Solutions.html)  
+    - [Practical solutions](html/E_Read_Counts_with_Subread.Solutions.html)  
 
 ### Day 2
 
