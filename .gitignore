@@ -1,0 +1,25 @@
+README.html
+LAYOUT.html
+FAQ.html
+DESIGN.html
+CONTRIBUTING.html
+CONDUCT.html
+*.md
+*~
+*.pyc
+_site
+.DS_Store
+.Rproj.user
+!CONDUCT.md
+!LICENSE.md
+!README.md
+!history.md
+!index.md
+# Inputs and outputs of the RNAseq analysis
+data/*
+*.bam
+!MCL*sm.bam
+*.indel
+*.fastq.gz
+.~lock.
+glimma-plots/*
