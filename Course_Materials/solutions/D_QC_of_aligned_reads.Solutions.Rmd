@@ -13,7 +13,7 @@ output: html_document
 >    directory).
 > ` cd ~/Course_Materials`
 > 2. Use the `samtools flagstat` command to generate alignment metrics for
->    the sorted bam file you created in the previous practical.
+>    the sorted bam file you created in the previous practical.  
 > ` samtools flagstat bam/MCL1.DL.sorted.bam`
 > ```
 > 28281754 + 0 in total (QC-passed reads + QC-failed reads)
@@ -128,8 +128,8 @@ multiqc .
 >
 > Q. Are there any bam files that look problematic?
 >
-> From the General statistics we can see that the sample MCL1.DM that has only
-> 9.8 million reads. This is not going to be sufficient for a good quality
+> From the Alignment Summary plot we can see that the sample MCL1.DM that has
+> only 9.8 million reads. This is not going to be sufficient for a good quality
 > analysis and we should exclude this sample.
 >
 > From the Gene Coverage plot we can see that there is one sample MCL1.LG that 
