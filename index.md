@@ -58,7 +58,7 @@ Methods](html/A_Introduction_to_RNAseq_Methods.html) - Ashley Sawle
     - [Practical](html/D_QC_of_aligned_reads_practical.html)  
     - [Practical solutions](html/D_QC_of_aligned_reads.Solutions.html)  
 
-16:30 - 17:30 Quantification with SubRead - Abbi Edwards
+16:30 - 17:30 Quantification with SubRead - Abbi Edwards  
     - [Introductory slides](html/E_Read_Counts_with_Subread.html)  
     - [Practical](html/E_Read_Counts_with_Subread.practical.html)  
     - [Practical solutions](html/E_Read_Counts_with_Subread.Solutions.html)  
@@ -75,7 +75,7 @@ Stephane Ballereau
 13:30 - 17:00 - [Linear Model and Statistics for Differential
 Expression](slides/StatisticalModels-20190328.pdf) - Dominique-Laurent  
 Couturier  
-    - [Statistical models practical sessions] (Course_Materials/03-StatisticalModels.Rmd)  
+    - [Statistical models practical sessions](Course_Materials/03-StatisticalModels.Rmd)  
     - [Dataset](Course_Materials/data/03-microarrays.csv)
  
 ### Day 3
