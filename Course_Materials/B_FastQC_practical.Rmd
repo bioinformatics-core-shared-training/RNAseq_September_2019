@@ -1,22 +1,79 @@
 ---
-title: "R Notebook"
-output: html_document
+title: "RNA-seq analysis in R"
+subtitle: "QC of raw reads with FastQC"
+author: "Stephane Ballereau, Dominique-Laurent Couturier, Abbi Edwards, Guillermo Parada Gonzalez, Ashley Sawle"
 ---
 
-**Exercise 3.1.1**
+In our intial QC of the raw fastq file we will be interested in gathering
+various metrics, such as the total number of reads, sequence length, or GC
+content.  We will also want to summarise such things as base quality scores and
+make assessments of the contamination of the reads with adapter sequence. 
 
-Create a directory named `QC`. Read `fastqc` help manual to run it for `FASTQ/SRR7889585.fastq.gz` and store the results at the newly created folder (`QC`). To speed it up, use 7 threads (which it will allow our machines to use 7 processors). You will get an html file as output; Open it with an internet browser (Chrome, Firefox, etc) and answer the following questions:
+[FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) is 
+quality control tool for high throughput sequence data that is maintained
+by the Babraham Institute. It is free to download and use. It runs a number
+QC analyses on sequencing data (in various formats, not just fastq) and 
+summarises the results in a easy to read report.
 
-1) navigate to the fastq directory
-  cd fastq/
-  
-2) check we have our fastq files here
-  ls
-  
-3) run fastqc on one of our samples
-  fastqc MCL1.DL.fastq.gz
-  
-4) open the html report in a browser and see if you can answer these questions.
-  A) What is the read length?
-  B) Does the quality score vary through the read length?
-  C) How is the data's quality?
+The basic command to run FastQC is simply `fastqc`. 
+
+Access the help page to find the basic usage an other options:
+
+`fastqc --help`
+
+The **Usage** is:
+
+```
+	fastqc seqfile1 seqfile2 .. seqfileN
+
+    fastqc [-o output dir] [--(no)extract] [-f fastq|bam|sam]
+           [-c contaminant file] seqfile1 .. seqfileN
+```
+
+The simplest way to use it is just to type `fastqc` followed by all the sequence files
+that you wish to QC. It will then run through as many files as you provide generaing
+a report for each one.
+
+There are many additional options that you can provide to modify the behavoiour
+of the programme. The most common one is `-o output_directory`. By default the
+report is written to the same directory as the fastqc file, however, if you
+would like to gather the QC in a different directory, you can specify this
+using the `-o` flag followed by the name of the directory, e.g:
+
+```
+fastqc -o QC fastq/my_fastq_file.fastq.gz
+```
+
+In this case we wish to generate a report for the file
+**my_fastq_file.fastq.gz**, which is in the folder **fastq**, and to have the
+report written into a directory called **QC**.
+
+Note that the output directory must already exist, FastQC will not create it.
+
+### Exercise 1
+
+> 1. Navigate to the **Course_Materials** directory using the `cd` (**c**hange
+>    **d**irectory) command:  
+> `cd ~/Course_Materials`  
+>
+> 2.   
+>       a) Use `ls` to list the contents of the directory. There should be directory
+>    called **fastq**    
+>       b) Use `ls` to list the contents of the **fastq** directory:  
+>    `ls fastq`
+>
+> 3. Create a new directory for the QC results called **QC** using the `mkdir`
+>    command:  
+> `mkdir QC`
+>
+> 4. Run fastqc on one of our samples:  
+> `fastqc fastq/MCL1.DL.fastq.gz`
+>
+> 5. The previous command has written the report to the **fastq** directory.
+>    Run the analysis again, but this time try to use the `-o` option to have
+>    the report written to the QC directory.
+>  
+> 6. Open the html report in a browser and see if you can answer these questions:  
+>           A) What is the read length?  
+>           B) Does the quality score vary through the read length?  
+>           C) How is the data's quality?  
