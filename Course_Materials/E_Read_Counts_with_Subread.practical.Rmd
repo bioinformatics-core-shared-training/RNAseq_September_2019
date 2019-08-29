@@ -70,13 +70,15 @@ GTF for the mouse GRCm38 genome assembly.
       --primary \
       -a references/Mus_musculus.GRCm38.97.gtf \
       -o counts/MCL1.DL.featureCounts \
-      bam/MCL1.DL.bam
+      bam/MCL1.DL.sorted.bam
 ```
 * **`-t exon`** - the **feature** type to count reads against, in this case
   exons
 * **`-g gene_id`** - the **attribute** type to summarise counts by, in this
   case the gene ID
 * **`--primary`** - only count primary alignment
+* **`-a`** - the gene annotation reference file
+* **`-o`** - the name for the output files
 
 **`featureCounts`** has many additional options that can be used to alter the
 ways in which it does the counting.
@@ -107,16 +109,22 @@ head counts/MCL1.DL.featureCounts
 ```
 
 The full results table begins with a line containing the command used to
-generate the counts. It then has a table of 7 columns. The first column is the
-gene identifier, this will vary depending on the GTF file used, in our case
-this is an Ensembl gene id. The second to fifth columns describe the genes
-location, and the sixth column is the length of the gene. The final column
-contains the number of reads assigned to the gene. Note that
-**`featureCounts`** outputs a row for every gene in the GTF, even the ones with
-no reads assigned, and the row order is determined by the order in the GTF.
-This means that if featureCounts is used on mutliple samples with same GTF
-file, the separate files can be combined easily as the rows always refer to the
-same gene.
+generate the counts. It then has a table of 7 columns:  
+
+1. The gene identifier; this will vary depending on the GTF file used, in our case
+this is an Ensembl gene id  
+2. Chromosome  
+3. Start position for each exon in the gene  
+4. End position for each exon in the gene  
+5. Transcription strand for each exon in the gene  
+6. The total length of the gene in nucleotides 
+7. The number of reads assigned to the gene.   
+   
+Note that **`featureCounts`** outputs a row for every gene in the GTF, even the
+ones with no reads assigned, and the row order is determined by the order in
+the GTF.  This means that if featureCounts is used on mutliple samples with
+same GTF file, the separate files can be combined easily as the rows always
+refer to the same gene.
 
 In fact we can have **`featureCounts`** do this for us by running all of our
 libraries together in one command. To save time for this we will use versions
@@ -143,24 +151,9 @@ head counts/GSE60450_Lactation.chr15.featureCounts
 
 > ## Challenge {.challenge}
 >
-> 1. Redo the counting over the exons, rather than the genes. Use
->    `featureCounts --help` to find the option you need to use. Make sure
->    featureCounts outputs the results to a new file.
+> 1. Redo the counting for your sorted bam over the exons, rather than the
+>    genes. Use `featureCounts --help` to find the option you need to use. Make
+>    sure featureCounts outputs the results to a new file.
 > 2. Redo the counting over genes, allowing for multimapping reads. Compare the
 >    results to our intial counts.
 >
-
-
-Notes
-
-* If you are sequencing your own data, the sequencing facility will almost
-  always provide fastq files which can be aligned to a genome with an aligner
-  of your choice.  
-* For publicly available sequence data from GEO/SRA, the files are usually in
-  the Sequence Read Archive (SRA) format. Prior to read alignment, these files
-  need to be converted into the FASTQ format using the fastq-dump utility from
-  the SRA Toolkit. We have included instructions on how to do this in [Getting
-  raw reads from
-  SRA](../Supplementary_Materials/S1_Getting_raw_reads_from_SRA.html) under the
-  Supplementary Material directory.  
-
