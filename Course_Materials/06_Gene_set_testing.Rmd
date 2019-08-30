@@ -196,6 +196,11 @@ most  cases,  the  Wallenius distribution can be used to approximate the true
 null distribution, without any significant loss in accuracy. The goseq package 
 implements this approximation as its default option."
 
+```{r neededPackage, eval = FALSE, echo = FALSE, include = FALSE}
+library(org.Mm.eg.db)
+```
+
+
 ```{r goSeqPackage, eval=FALSE}
 library(goseq)
 supportedOrganisms() %>% filter(str_detect(Genome, "mm"))

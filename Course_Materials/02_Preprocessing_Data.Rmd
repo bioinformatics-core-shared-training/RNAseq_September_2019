@@ -329,15 +329,21 @@ autoplot(pcDat,
 > Look at the last PCA plot.
 > What is the greatest source of variation?
 > Is there something strange going on with the samples?
-> Let's identify these samples:
+
+Let's identify these samples. The package `ggrepel` allows us to add text to 
+the plot, but ensures that points that are close together don't have their
+labels overlapping (they *repel* each other).
 
 ```{r badSamples, fig.width=6.5, fig.height=5, fig.align="center"}
+library(ggrepel)
+
 # setting shape to FALSE causes the plot to default to using the labels
 autoplot(pcDat,
          data = sampleinfo, 
          colour="CellType", 
-         shape=FALSE,
-         label.size=4)
+         shape="Status",
+         size=5) +
+    geom_text_repel(aes(x=PC1, y=PC2, label=Sample), box.padding = 0.8)
 ```
 
 The mislabelled samples are *MCL1.DG*, which is labelled as *luminal* but should
@@ -476,9 +482,9 @@ logcounts <- log2(countdata + 1)
 
 par(mfrow=c(1,2))
 plotMA(logcounts, array = 7)
-abline(h=0,col="grey")
+abline(h=0, col="red")
 plotMA(logcounts, array = 11)
-abline(h=0,col="grey")
+abline(h=0, col="red")
 ```
 
 The MA plots show log-fold-changes (difference: y-axis) against average
@@ -492,9 +498,9 @@ logNormalizedCounts <- log2(normalizedCounts + 1)
 
 par(mfrow=c(1,2))
 plotMA(logNormalizedCounts, array = 7)
-abline(h=0,col="grey")
+abline(h=0,col="red")
 plotMA(logNormalizedCounts, array = 11)
-abline(h=0,col="grey")
+abline(h=0,col="red")
 ```
 
 > ### Challenge 2

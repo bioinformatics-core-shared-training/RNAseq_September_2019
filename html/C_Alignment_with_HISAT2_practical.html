@@ -282,7 +282,7 @@ There should be file called <code>Mus_musculus.GRCm38.chr1.fa</code>. This is th
 <li>Set the number of threads (number of processors to use) to 7 - check the help page to find the appropriate flag</li>
 </ul></li>
 </ol>
-<p><strong>Note</strong>: when the command runs successfully, there will be no indication that it is doing anything except that the command prompt disappears and the terminal will appear <em>frozen</em> (this is a helpful feature of many unix/linux tools). The alignment take 5-10 minutes.</p>
+<p><strong>Note</strong>: when the <code>hisat2</code> command runs successfully, there will be no indication that it is doing anything except that the command prompt disappears and the terminal will appear <em>frozen</em> (this is a helpful feature of many unix/linux tools). The alignment take 10-15 minutes - go get a coffee or help the person next to you.</p>
 </blockquote>
 </div>
 </div>
@@ -291,24 +291,36 @@ There should be file called <code>Mus_musculus.GRCm38.chr1.fa</code>. This is th
 <p>The output of hisat2 is a SAM file. This is the a standardized format for presenting aligned sequence data. You can read details of the specifications here:</p>
 <p><a href="https://samtools.github.io/hts-specs/SAMv1.pdf" class="uri">https://samtools.github.io/hts-specs/SAMv1.pdf</a></p>
 <p>Unfortunately, this is a plain text file and they tend to be very large. BAM files are the binary (compressed) version of SAM files. They are much smaller and can be indexed making them quicker to access and process.</p>
+<div id="sam-to-bam-with-samtools" class="section level3">
+<h3>3.1 SAM to BAM with samtools</h3>
 <p>We can transform from SAM to BAM using <code>samtools</code>. <code>samtools</code> is a toolkit that provides a number of useful tools for working with SAM/BAM files. In this case we will use the <code>view</code> command to transform the SAM file into a BAM file.</p>
 <p>The general command is:</p>
 <p><code>samtools view -b my_sample.sam &gt; my_sample.bam</code></p>
-<p><code>view</code> is the tool for viewing a sam or bam file. It can take many arguments which can do things such as filter for particular read characteristics. Normally it outputs in SAM format so that the results can be read by a human, in this case the <code>-b</code> flag tells it to output in BAM format.</p>
+<p><code>view</code> is the tool for viewing a sam or bam file.</p>
+<p>Normally it outputs in SAM format so that the results can be read by a human, in this case the <code>-b</code> flag tells it to output in BAM format.</p>
+<p>By default <code>samtools view</code> outputs it’s results directly to the console so that we can view them. The <code>&gt;</code> redirects the output to the file <code>my_sample.bam</code>.</p>
+</div>
+<div id="sorting-a-bam-file" class="section level3">
+<h3>3.2 Sorting a bam file</h3>
 <p>After we have transformed the SAM file to a BAM file we will want to index it, but first we should sort the file so that the reads are in order with regard to chromosome number and position.</p>
 <p>To sort the file the general command is:</p>
 <p><code>samtools sort my_sample.bam &gt; my_sample.sorted.bam</code></p>
-<p>Finally, we can index with the <code>index</code> command.</p>
+</div>
+<div id="indexing-a-bam-file" class="section level3">
+<h3>3.3 Indexing a bam file</h3>
+<p>Finally, we should index the bam with the <code>index</code> command. This makes accessing accessing the data quicker for downstream tools.</p>
+<p>To index the file the general command is:</p>
 <p><code>samtools index my_sample.sorted.bam</code></p>
-<p>This will create a new file called <code>my_sample.sorted.bam.bai</code> (<strong>ba</strong>m <strong>i</strong>ndex).</p>
+<p>This would create a new file called <code>my_sample.sorted.bam.bai</code> (<strong>ba</strong>m <strong>i</strong>ndex).</p>
+</div>
 <div id="exercise-3" class="section level3">
 <h3>Exercise 3</h3>
 <blockquote>
 <ol style="list-style-type: decimal">
-<li>Transform your aligned SAM file in to a BAM file called <code>MCL1.DL.bam</code>.</li>
-<li>Sort the BAM file to a create a bam files called <code>MCL1.DL.sorted.bam</code>. Sorting can take 5-10 minutes</li>
+<li>Transform your aligned SAM file in to a BAM file called <code>MCL1.DL.bam</code>. Use the option <code>-@ 7</code> to use 7 cores. This vastly speeds up the compression.</li>
+<li>Sort the BAM file to a create a bam files called <code>MCL1.DL.sorted.bam</code>. Again use the <code>-@ 7</code> options to use 7 cores.</li>
 <li>Index the sorted BAM file</li>
-<li>Now that you have a bam file view the header of the file with the command:<br />
+<li>Now that you have a bam file have a look at the header of the file with the command:<br />
 <code>samtools view -H my_sample.sorted.bam</code><br />
 Replacing “<code>mysample.sorted.bam</code>” with name of your bam file.</li>
 <li>View the first few aligned sequences with the command: <code>samtools view my_sample.sorted.bam | head</code><br />
