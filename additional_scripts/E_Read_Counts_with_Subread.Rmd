@@ -26,11 +26,14 @@ the BAM files, we also need to provide **`featureCounts`** with an annotation
 file. Usually this will be a GTF/GFF file corresponding to the genome assembly
 used.
 
+<img src="images/SubreadSmallLogo.png" class="centerimg" style="width: 60%; margin-top: 60px;">
+
 ## GTF file format
 
 GTF/GFF files define genomic regions covered by different types of genomic
-features, e.g. genes, transcripts, exons, or UTRs. The necessary GTF is already
-in the directory `Course_Materials/data`.
+features, e.g. genes, transcripts, exons, or UTRs. 
+
+<img src="images/gtf.png" class="centerimg" style="width: 60%; margin-top: 60px;">
 
 ## Using FeatureCounts
 
