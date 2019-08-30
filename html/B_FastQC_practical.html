@@ -219,7 +219,14 @@ summary {
 <code>mkdir QC</code></p></li>
 <li><p>Run fastqc on one of our samples:<br />
 <code>fastqc fastq/MCL1.DL.fastq.gz</code></p></li>
-<li><p>The previous command has written the report to the <strong>fastq</strong> directory - the default behaviour for fastqc. Run the analysis again, but this time try to use the <code>-o</code> option to have the report written to the QC directory.</p></li>
+<li>The previous command has written the report to the <strong>fastq</strong> directory - the default behaviour for fastqc. We want it in the <strong>QC</strong> directory.
+<ol style="list-style-type: lower-alpha">
+<li>Use the <code>rm</code> (remove) command to delete the report:<br />
+<code>rm fastq/MCL1.DL_fastqc.html</code><br />
+</li>
+<li>Also delete the associated zip file (this contains all the figures and data tables for the report)</li>
+</ol></li>
+<li><p>Run the FastQC again, but this time try to use the <code>-o</code> option to have the report written to the <strong>QC</strong> directory.</p></li>
 <li><p>Open the html report in a browser and see if you can answer these questions:<br />
 A) What is the read length?<br />
 B) Does the quality score vary through the read length?<br />

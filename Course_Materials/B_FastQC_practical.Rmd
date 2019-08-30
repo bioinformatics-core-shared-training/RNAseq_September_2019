@@ -74,10 +74,16 @@ Note that the output directory must already exist, FastQC will not create it.
 > `fastqc fastq/MCL1.DL.fastq.gz`
 >
 > 5. The previous command has written the report to the **fastq** directory -
->    the default behaviour for fastqc.  Run the analysis again, but this time
->    try to use the `-o` option to have the report written to the QC directory.
+>    the default behaviour for fastqc. We want it in the **QC** directory. 
+>       a) Use the `rm` (remove) command to delete the report:   
+>          `rm fastq/MCL1.DL_fastqc.html`  
+>       b) Also delete the associated zip file (this contains all the figures
+>       and data tables for the report)
+>
+> 6. Run the FastQC again, but this time try to use the `-o` option to have
+>    the report written to the **QC** directory.
 >  
-> 6. Open the html report in a browser and see if you can answer these questions:  
+> 7. Open the html report in a browser and see if you can answer these questions:  
 >           A) What is the read length?  
 >           B) Does the quality score vary through the read length?  
 >           C) How is the data's quality?  
