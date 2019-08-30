@@ -13,13 +13,17 @@ subtitle: Counting
 
 ## Counting
 
+Once our reads have been aligned against the genome, we need to summarise the
+information across genes or exons. We can determine if the region
+each read is aligned to corresponds to a particular gene or exon and then
+summarise across the entire BAM file to get total read counts for each gene or
+exon. 
+
 * Also need annotation file (gtf) so feature counts knows where all your genes,
-  UTRs etc. are
+  UTRs etc. are. Usually this will be a GTF/GFF file corresponding to the genome        assembly used.
 * can get from UCSC or ENSEMBL, instructions in supplementary section
 
 * lets look at gtf
-* navigate, ls and get them to display post it note
-* unzip gtf file
 
 ```
 cd ~/CourseMaterials/data/counts

@@ -14,36 +14,50 @@ output:
 
 ## Counting
 
-Once our reads have been aligned against the genome, we need to summarise the
-information across genes or exons. We can determine if the region
-each read is aligned to corresponds to a particular gene or exon and then
-summarise across the entire BAM file to get total read counts for each gene or
-exon. 
+* Use **`featureCounts`** [@Liao2014] programme from the [subRead
+package](http://subread.sourceforge.net/)
 
-We will use **`featureCounts`** [@Liao2014] programme from the [subRead
-package](http://subread.sourceforge.net/) to do the counting. In addition to
-the BAM files, we also need to provide **`featureCounts`** with an annotation
-file. Usually this will be a GTF/GFF file corresponding to the genome assembly
-used.
 
-<img src="images/SubreadSmallLogo.png" class="centerimg" style="width: 60%; margin-top: 60px;">
+ * Need to provide **`featureCounts`** with an annotation file. 
 
-## GTF file format
+<img src="images/counting_workflow.png" class="centerimg" style="width: 70%; margin-top: 60px;">
+
+## GTF File Format
 
 GTF/GFF files define genomic regions covered by different types of genomic
 features, e.g. genes, transcripts, exons, or UTRs. 
 
-<img src="images/gtf.png" class="centerimg" style="width: 60%; margin-top: 60px;">
+<img src="images/gtf.png" class="centerimg" style="width: 100%;">
+
+## GTF File Format
+
+<img src="images/gtf_chr.png" class="centerimg" style="width: 100%;">
+
+## GTF File Format
+
+<img src="images/gtf_source.png" class="centerimg" style="width: 100%;">
+
+## GTF File Format
+
+<img src="images/gtf_coords.png" class="centerimg" style="width: 100%;">
+
+## GTF File Format
+
+<img src="images/gtf_strand.png" class="centerimg" style="width: 100%;">
+
+## GTF File Format
+
+<img src="images/gtf_extra.png" class="centerimg" style="width: 100%;">
 
 ## Using FeatureCounts
 
-When using a GTF/GFF file we need to tell **`featureCounts`** what feature type
-to use to count reads, and what attribute type to summarise the results at. For
-RNAseq we most commonly wish to count reads aligning to exons, and then to
-summarise at the gene level. 
+When using a GTF/GFF file we need to tell **`featureCounts`** 
 
-Lets have a quick look at the top of a GTF file so we can see what data it
-contains and what **feature type** and **attribute type** mean:
+* what feature type to use to count reads
+* what attribute type to summarise the results with
+
+For RNAseq we most commonly wish to count reads aligning to exons, and then to
+summarise at the gene level. 
 
 <img src="images/genes_and_exons.png" class="centerimg" style="width: 60%; margin-top: 60px;">
 
@@ -73,81 +87,6 @@ GTF for the mouse GRCm38 genome assembly.
 * **`-a`** - the gene annotation reference file
 * **`-o`** - the name for the output files
 
-**`featureCounts`** has many additional options that can be used to alter the
-ways in which it does the counting.
 
-```
-featureCounts --help
-```
-## Exercise
+# And now onto the Exercise...
 
-Running featureCounts generates two output files. A summary statistics table
-(**`MCL1.DG.featureCounts.summary`**) and a full table of counts
-(**`MCL1.DG.featureCounts`**) for each feature (gene in this case). Let take a
-look at each file.
-
-```
-cat counts/MCL1.DL.featureCounts.summary
-```
-
-The summary table reports the numbers of unassigned reads and the reasons why
-they are not assigned (eg. ambiguity, multi-mapping, secondary alignment,
-mapping quality, fragment length, chimera, read duplicate, non-junction and so
-on), in addition to the number of successfully assigned reads for each library.
-See [subread
-documentation](http://bioinf.wehi.edu.au/subread-package/SubreadUsersGuide.pdf)
-('Program output' section).
-
-```
-head counts/MCL1.DL.featureCounts
-```
-
-The full results table begins with a line containing the command used to
-generate the counts. It then has a table of 7 columns:  
-
-1. The gene identifier; this will vary depending on the GTF file used, in our case
-this is an Ensembl gene id  
-2. Chromosome  
-3. Start position for each exon in the gene  
-4. End position for each exon in the gene  
-5. Transcription strand for each exon in the gene  
-6. The total length of the gene in nucleotides 
-7. The number of reads assigned to the gene.   
-   
-Note that **`featureCounts`** outputs a row for every gene in the GTF, even the
-ones with no reads assigned, and the row order is determined by the order in
-the GTF.  This means that if featureCounts is used on mutliple samples with
-same GTF file, the separate files can be combined easily as the rows always
-refer to the same gene.
-
-In fact we can have **`featureCounts`** do this for us by running all of our
-libraries together in one command. To save time for this we will use versions
-of our BAM files that only include alignments to chromosome 15. You can find
-these in **`small_bams`** directory. There is also a chromosome 15 only gtf 
-in the reference directory.
-
-```
-  featureCounts \
-      -t exon \
-      -g gene_id \
-      --primary \
-      -a references/Mus_musculus.GRCm38.97.chr15.gtf  \
-      -o counts/GSE60450_Lactation.chr15.featureCounts \
-      small_bams/MCL*.bam
-```
-
-This gives us a combined counts table as an output with the first 6 columns as
-before but now the folowing columns contain the counts for all of the samples.
-
-```
-head counts/GSE60450_Lactation.chr15.featureCounts
-```
-
-### Exercise 1
->
-> 1. Redo the counting for your sorted bam over the exons, rather than the
->    genes. Use `featureCounts --help` to find the option you need to use. Make
->    sure featureCounts outputs the results to a new file.
-> 2. Redo the counting over genes, allowing for multimapping reads. Compare the
->    results to our intial counts.
->
