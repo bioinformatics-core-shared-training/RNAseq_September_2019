@@ -1,3 +1,11 @@
+suppressPackageStartupMessages(library(tidyverse))
+
+getLibs <- function(rmdFile){
+    read_lines(rmdFile) %>%
+        str_subset("^library\\(") %>%
+        str_remove_all("^library\\(|\\).*")
+}
+
 testLib <- function(lib){
     tryCatch(
              {
@@ -6,16 +14,22 @@ testLib <- function(lib){
              },
              error = function(con){
                  message(lib, " No")
-                 return(NA)
+                 return(lib)
              }
              )
 }
 
 
-libs <- c("biomaRt", "circlize", "clusterProfiler", "ComplexHeatmap", "DESeq2",
-          "fgsea", "ggfortify", "Glimma", "GO.db", "goseq", "limma",
-          "pathview", "tidyverse")
-
-for(i in libs){ testLib(i) }
-
-
+missingLibs <- list.files("Course_Materials", pattern = "Rmd$", full.names = TRUE) %>%
+    map(getLibs) %>%
+    unlist() %>%
+    unique() %>%
+    map(testLib) %>%
+    unlist()
+    
+message()
+if(!is.null(missingLibs)){
+    message("Missing libraries: ", missingLibs)
+}else{
+    message("All correctly installed.")
+}
