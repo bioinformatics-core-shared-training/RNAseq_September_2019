@@ -52,8 +52,12 @@ Note that the output directory must already exist, FastQC will not create it.
 
 ### Exercise 1
 
-> 1. Navigate to the **Course_Materials** directory using the `cd` (**c**hange
->    **d**irectory) command:  
+> 1. 
+>       a) Check the location of the current directory using the command `pwd`  
+>       b) If the current directory is not
+>       `/home/participant/Course_Materials`, then navigate to the
+>       **Course_Materials** directory using the `cd` (**c**hange
+>       **d**irectory) command:  
 > `cd ~/Course_Materials`  
 >
 > 2.   
@@ -69,9 +73,9 @@ Note that the output directory must already exist, FastQC will not create it.
 > 4. Run fastqc on one of our samples:  
 > `fastqc fastq/MCL1.DL.fastq.gz`
 >
-> 5. The previous command has written the report to the **fastq** directory.
->    Run the analysis again, but this time try to use the `-o` option to have
->    the report written to the QC directory.
+> 5. The previous command has written the report to the **fastq** directory -
+>    the default behaviour for fastqc.  Run the analysis again, but this time
+>    try to use the `-o` option to have the report written to the QC directory.
 >  
 > 6. Open the html report in a browser and see if you can answer these questions:  
 >           A) What is the read length?  
