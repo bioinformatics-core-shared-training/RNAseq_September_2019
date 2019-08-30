@@ -11,14 +11,6 @@ layout: page
 subtitle: Counting
 ---
 
-
-## Introduction and data import
-
-* Today differential expression analysis of RNASeq data, in R
-* aligned using HISAT2
-* Bam files **`data`** directory under the **`CourseMaterials`** 
-* Instructions on obtaining these materials in supplementary section
-
 ## Counting
 
 * Also need annotation file (gtf) so feature counts knows where all your genes,
