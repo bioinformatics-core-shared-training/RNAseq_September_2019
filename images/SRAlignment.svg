@@ -14,7 +14,7 @@
    viewBox="0 0 322.58728 84.983925"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.91 r13725"
    sodipodi:docname="SRAlignment.svg">
   <defs
      id="defs2" />
@@ -25,16 +25,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.67410996"
+     inkscape:zoom="1"
      inkscape:cx="487.1635"
      inkscape:cy="231.56972"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1918"
-     inkscape:window-height="1023"
+     inkscape:window-width="1280"
+     inkscape:window-height="687"
      inkscape:window-x="0"
-     inkscape:window-y="27"
+     inkscape:window-y="1"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -175,7 +175,7 @@
          sodipodi:role="line">Reads:</tspan></text>
     <g
        id="g923"
-       transform="matrix(0.30647897,0,0,0.39078331,-69.371926,132.39481)">
+       transform="matrix(0.30647897,0,0,0.39078331,-65.420818,132.39481)">
       <path
          sodipodi:nodetypes="cc"
          inkscape:connector-curvature="0"
