@@ -43,6 +43,7 @@ Methods](html/A_Introduction_to_RNAseq_Methods.html) - Ashley Sawle
     - [Introductory slides](html/B_FastQC.html)  
     - [Practical](html/B_FastQC_practical.html)  
 <!--     - [Practical solutions](html/B_FastQC_practical.Solutions.html)   -->
+    - [Example of using Trimmomatic to remove adapters](html/Trimming.html)
 
 11:30 - 12:30 Short read alignment with HISAT2 - Ashley Sawle  
     - [Introductory slides](html/C_Alignment_with_HISAT2.html)  
