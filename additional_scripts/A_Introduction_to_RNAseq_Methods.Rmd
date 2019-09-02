@@ -105,11 +105,9 @@ output:
 </div>
 
 <div style="margin-left: 60px;
-            float: none;">
-<img src="images/RNAseq_WorkFlow.png", style="width: 48%;
-                                               margin-left: auto;
-                                               margin-right: auto;
-                                               display: block;">
+            float: none;">  
+            
+<img src="images/RNAseq_WorkFlow.png" style="width: 48%; margin-left: auto; margin-right: auto; display: block;">
 </div>
 
 <div style="text-align: right">
