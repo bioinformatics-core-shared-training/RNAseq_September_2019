@@ -39,6 +39,10 @@ features, e.g. genes, transcripts, exons, or UTRs.
 
 ## GTF File Format
 
+<img src="images/gtf_feature.png" class="centerimg" style="width: 100%;">
+
+## GTF File Format
+
 <img src="images/gtf_coords.png" class="centerimg" style="width: 100%;">
 
 ## GTF File Format
