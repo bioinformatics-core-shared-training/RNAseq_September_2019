@@ -4,9 +4,9 @@ subtitle: "Annotation and Visualisation of Differential Expression Results"
 author: "Stephane Ballereau, Dominique-Laurent Couturier, Mark Dunning, Abbi Edwards, Ashley Sawle"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
-  html_notebook:
-    toc: yes
   html_document:
+    toc: yes
+  html_notebook:
     toc: yes
 minutes: 300
 layout: page
@@ -177,7 +177,7 @@ annotLvV <- as.data.frame(resLvV) %>%
     rename(logFC=log2FoldChange, FDR=padj)
 ```
 
-Finally we can output the annotation DE results using `write_csv`.
+Finally we can output the annotation DE results using `write_tsv`.
 
 ```{r outputDEtables, eval=F}
 write_tsv(annotLvV, "results/VirginVsLactating_Results_Annotated.txt")
@@ -289,11 +289,28 @@ displays a measure of significance on the y-axis and fold-change on the x-axis.
 An example of what your plot should look like:
 ![](../images/Volcano.png)   
 
-### Interactive StripChart with Glimma
+## Strip chart for gene expression
 
 Before following up on the DE genes with further lab work, a recommended *sanity
 check* is to have a look at the expression levels of the individual samples for 
-the genes of interest. 
+the genes of interest. We can quickly look at grouped expression by using 
+`plotCounts` function of `DESeq2` to  retrieve the normalised expression values 
+from the `ddsObj` object and then plotting with  `ggplot2`.
+
+```{r plotGeneCounts}
+# Let's look at the most significantly differentially expressed gene
+topgene <- filter(shrinkLvV, Symbol=="Wap")
+geneID <- topgene$GeneID
+plotCounts(ddsObj, gene = geneID, intgroup = c("CellType", "Status"),
+           returnData = T) %>% 
+    ggplot(aes(x=Status, y=log2(count))) +
+      geom_point(aes(fill=Status), shape=21, size=2) +
+      facet_wrap(~CellType) +
+      expand_limits(y=0)
+```
+
+
+### Interactive StripChart with Glimma
 
 An interactive version of the volcano plot above that includes the raw per 
 sample values in a separate panel is possible via the `glXYPlot` function in the
