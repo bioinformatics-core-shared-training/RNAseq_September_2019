@@ -15,7 +15,7 @@ output: html_document
 ```
   featureCounts \
       -t exon \
-      -g exon \
+      -g exon_id \
       --primary \
       -a references/Mus_musculus.GRCm38.97.gtf \
       -o counts/MCL1.DL.exons.featureCounts \
