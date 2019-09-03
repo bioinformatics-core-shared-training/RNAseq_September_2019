@@ -86,11 +86,6 @@ library from that gene.
 
 <img src="images/SequencingArtefacts.png" class="centerimg" style="width: 75%">
 
-<div>
-The development of larger suites of unique dual-indexes should eliminate the 
-index swapping issue.
-</div>
-
 <!--
 ## Alignment
 
@@ -269,6 +264,7 @@ Simple difference in means
 * Suitable for microarray data but not for RNAseq data
 
 <div style="width: 60%; margin-left: 16%; padding-top: 5px">
+
 ```{r diffInMeans, echo=FALSE, fig.width=7, fig.height=4}
 library(shape)
 x1 <- seq(0, 6, length=100)
@@ -336,7 +332,7 @@ legend("topright", legend = leg, pt.bg = cols, pch=21, bty="n")
 
 </div>
 
-<img src="images/NegativeBinomialDistribution.png", style="width: 45%;">
+<img src="images/NegativeBinomialDistribution.png" style="width: 45%;">
 
 <div style="text-align: right">
     Anders, S. & Huber, W. (2010) Genome Biology
@@ -361,7 +357,7 @@ legend("topright", legend = leg, pt.bg = cols, pch=21, bty="n")
 
 </div>
 
-<img src="images/dispersion.png", style="width: 45%; margin-top: 40px">
+<img src="images/dispersion.png" style="width: 45%; margin-top: 40px">
 
 
 ## Differential Expression - linear models
