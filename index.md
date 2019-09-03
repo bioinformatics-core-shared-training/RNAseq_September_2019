@@ -66,7 +66,7 @@ Methods](html/A_Introduction_to_RNAseq_Methods.html) - Ashley Sawle
 
 ### Day 2
 
-9:30 - 10:00  [Introduction to RNAseq Analysis in R](01_Introduction_to_RNAseq_Analysis_in_R.html)
+9:30 - 10:00  [Introduction to RNAseq Analysis in R](html/01_Introduction_to_RNAseq_Analysis_in_R.html)
  - Ashley Sawle
 
 10:00 - 12:30 - [RNA-seq Pre-processing](html/02_Preprocessing_Data.html) -
