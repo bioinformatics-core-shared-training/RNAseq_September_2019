@@ -36,14 +36,15 @@ output:
 
 ```{r message = FALSE, warning = FALSE, echo = TRUE} 
 one3levelfactor = data.frame(condition =
-rep(c("TreatmentA", "TreatmentB", "Control"), 2))
+                              rep(c("TreatmentA", "TreatmentB", "Control"), 2))
+one3levelfactor
 # model without intercept and default levels:
 model.matrix(~ condition - 1, data = one3levelfactor)
 # model with intercept and default levels
 model.matrix(~ condition, data = one3levelfactor)
-# model with intercept and self-defined levels
+# model with intercept and self-defined levels: "TreatmentB" as reference group
 levels(one3levelfactor$condition)
-levels(one3levelfactor$condition) = c("TreatmentB", "TreatmentA", "Control") 
+levels(one3levelfactor$condition) = 
 model.matrix(~ condition, data = one3levelfactor)
 ```
 
@@ -157,14 +158,14 @@ Estimate the regression coefficients of the model with interation by hand
 Y = microarrays$expression
 X = model.matrix(~mousetype*celltype,data=microarrays)
 # estimate
-Beta.hat = solve(t(X)%*%X)%*%t(X)%*%Y
+Beta.hat = 
 ```
 
 For fun, simulate data with sigma = 2
 ```{r message = FALSE, warning = FALSE, echo = TRUE}
 # prepare 
-E  = rnorm(nrow(X),mean=0,sd=.25)
-Y  = X%*%Beta.hat + E 
+E  = 
+Y  =  
 # estimate
 summary(lm(Y~microarrays$mousetype*microarrays$celltype))
 ```
