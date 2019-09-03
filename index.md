@@ -75,6 +75,7 @@ Stephane Ballereau
 
 13:30 - 17:00 Statistical Analysis of Bulk RNAseq Data - Dominique-Laurent  
 Couturier 
+
     - [Slides](html/03-Statistical_Models.pdf)  
     - [Practical](Course_Materials/03-Statistical_Models.Rmd)  
 
