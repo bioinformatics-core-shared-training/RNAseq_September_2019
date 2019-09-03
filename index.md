@@ -77,7 +77,7 @@ Stephane Ballereau
 Expression](slides/StatisticalModels-20190328.pdf) - Dominique-Laurent  
 Couturier  
     - [Statistical models practical sessions](Course_Materials/03-StatisticalModels.Rmd)  
-    - [Dataset](Course_Materials/data/03-microarrays.csv)
+<!--     - [Dataset](Course_Materials/data/03-microarrays.csv) -->
  
 ### Day 3
 
