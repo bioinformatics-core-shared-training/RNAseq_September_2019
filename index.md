@@ -73,11 +73,11 @@ Methods](html/A_Introduction_to_RNAseq_Methods.html) - Ashley Sawle
 Stephane Ballereau  
 <!--     - [Practical solutions](html/02_Preprocessing_Data.Solutions.html)   -->
 
-13:30 - 17:00 - [Linear Model and Statistics for Differential
-Expression](slides/StatisticalModels-20190328.pdf) - Dominique-Laurent  
-Couturier  
-    - [Statistical models practical sessions](Course_Materials/03-StatisticalModels.Rmd)  
-    - [Dataset](Course_Materials/data/03-microarrays.csv)
+13:30 - 17:00 Statistical Analysis of Bulk RNAseq Data - Dominique-Laurent  
+Couturier 
+    - [Slides](html/03-Statistical_Models.pdf)  
+    - [Practical](Course_Materials/03-Statistical_Models.Rmd)  
+
  
 ### Day 3
 
