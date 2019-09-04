@@ -4,9 +4,9 @@ subtitle: "Differential Expression of RNA-seq data"
 author: "Stephane Ballereau, Dominique-Laurent Couturier, Mark Dunning, Abbi Edwards, Ashley Sawle"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
-  html_notebook:
-    toc: yes
   html_document:
+    toc: yes
+  html_notebook:
     toc: yes
 minutes: 300
 layout: page
@@ -273,7 +273,7 @@ Suppose we thought that maybe `status` were irrelevant and really the only
 differences might be between cell types. We could fit a simpler model, this 
 would give us more degrees of freedom and therefore more power, but how
 would we know if it was a better model of not? We can compare the two models
-using the "log ratio test" (LRT).
+using the "likelihood ratio test" (LRT).
 
 ```{r compareModels}
 designC <- as.formula(~ CellType )
