@@ -145,7 +145,11 @@ filterValues <- rownames(resLvV)
 
 # check the available "attributes" - things you can retreive
 listAttributes(ensembl) %>%
-    head(20)
+    filter(str_detect(name, "description"))
+
+listAttributes(ensembl) %>%
+    filter(str_detect(name, "biotype"))
+
 attributeNames <- c('ensembl_gene_id',
                     'entrezgene_id',
                     'external_gene_name',
@@ -158,10 +162,19 @@ annot <- getBM(attributes=attributeNames,
                values = filterValues,
                mart = ensembl)
 
-# dulicate ids
+# duplicate ids
+
+annot %>%
+  add_count(ensembl_gene_id) %>% 
+  filter(n>1) %>% 
+  distinct(ensembl_gene_id) %>% 
+  nrow()
+
+#or
 sum(duplicated(annot$ensembl_gene_id))
 
-# missing gens
+
+# missing genes
 missingGenes <- !rownames(resLvV)%in%annot$ensembl_gene_id
 rownames(resLvV)[missingGenes]
 ```
@@ -183,14 +196,6 @@ annotLvV <- as.data.frame(resLvV) %>%
     rename(logFC=log2FoldChange, FDR=padj)
 ```
 
-```{r addAnnotationR, echo=FALSE, message=FALSE}
-load("../Course_Materials/Robjects/Ensembl_annotations.RData")
-colnames(ensemblAnnot)
-annotLvV <- as.data.frame(resLvV) %>% 
-    rownames_to_column("GeneID") %>% 
-    left_join(ensemblAnnot, "GeneID") %>% 
-    rename(logFC=log2FoldChange, FDR=padj)
-```
 
 Finally we can output the annotation DE results using `write_tsv`.
 
