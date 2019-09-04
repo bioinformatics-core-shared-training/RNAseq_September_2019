@@ -4,9 +4,9 @@ subtitle: "Annotation and Visualisation of RNA-seq results"
 author: "Stephane Ballereau, Mark Dunning, Abbi Edwards, Oscar Rueda, Ashley Sawle"
 date: '`r format(Sys.time(), "Last modified: %d %b %Y")`'
 output:
-  html_document:
-    toc: yes
   html_notebook:
+    toc: yes
+  html_document:
     toc: yes
 minutes: 300
 layout: page
@@ -106,14 +106,13 @@ Let's inspect the annotation.
 ```{r inspectAnnot}
 head(annot)
 dim(annot) # why are there more than 1000 rows?
-length(unique(annot$ensembl_gene_id)) # why are there less than 1000 Gene ids?
+length(unique(annot$ensembl_gene_id))
 
-isDup <- duplicated(annot$ensembl_gene_id)
-dup <- annot$ensembl_gene_id[isDup]
-annot[annot$ensembl_gene_id%in%dup,]
+# find all rows containing duplicated ensembl ids
+annot %>%  
+    add_count(ensembl_gene_id) %>%  
+    filter(n>1)
 ```
-
-missing one is depreceated gene annotation... (our gtf is little older than biomaRt)
 
 There are a couple of genes that have multiple entries in the retrieved 
 annotation. This is becaues there are multiple Entrez IDs for a single Ensembl 
