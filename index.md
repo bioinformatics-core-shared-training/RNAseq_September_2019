@@ -124,7 +124,7 @@ Introductory R materials:
 Additional RNAseq materials:
 
 - [Downloading files from SRA and aligning](Supplementary_Materials/S1_Getting_raw_reads_from_SRA.html)
-- [Additional annotation and plotting](Supplementary_Materials/S3_Annotation_and_Visualisation.html)
+- [Additional annotation and plotting](Supplementary_Materials/S3_Annotation_and_Visualisation.nb.html)
 
 Data: Example Mouse mammary data (fastq files): 
 	[https://figshare.com/s/f5d63d8c265a05618137](https://figshare.com/s/f5d63d8c265a05618137)
